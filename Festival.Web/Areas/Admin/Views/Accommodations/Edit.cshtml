@@ -1,0 +1,95 @@
+﻿@model Festival.Web.ViewModels.Accommodation.EditAccommodationVM;
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+
+
+<style>
+
+
+
+
+
+
+
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="Save" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <input asp-for="ID" hidden />
+            <div class="form-group newRow">
+                <label for="Name" class="newLabel">Name :</label>
+                <div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label for="Address" class="newLabel">Address :</label>
+                <div>
+                    <input asp-for="Address" class="form-control" />
+                </div>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+
+                <label class="newLabel" for="PhoneNumber">Phone number :</label>
+                <div>
+                    <input asp-for="PhoneNumber" class="form-control col-6" />
+                </div>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+            </div>
+            <div class="form-group newRow">
+
+                <label class="newLabel" for="Distance">Distance to Festival area (km) : </label>
+                <div>
+                    <input class="col-3 form-control" asp-for="Distance" />
+                </div>
+                <span asp-validation-for="Distance" class="text-danger"></span>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group newRow">
+                <label class="newLabel" for="Description">Description :</label>
+                <div>
+                    <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                </div>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <label class="newLabel" for="Image">Image : </label>
+            <div class="custom-file newRow">
+                <div>
+                    <input asp-for="ProfileImage" class="form-control custom-file-input col-6" />
+                    <label class="custom-file-label" for="ProfileImage">Choose image</label>
+                </div>
+                <span asp-validation-for="ProfileImage" class="text-danger"></span>
+            </div>
+        </fieldset>
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="Accommodations" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <a asp-controller="Accommodations" asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-danger" role="button" aria-pressed="true">
+                Delete
+                <i class="fa fa-trash"></i>
+            </a>
+            <input type="submit" value="Save changes" class="btn btn-secondary submit ml-1" />
+        </div>
+
+
+    </form>
+</div>

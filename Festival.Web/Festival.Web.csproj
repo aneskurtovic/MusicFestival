@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Guest\Data\**" />
+    <Compile Remove="Areas\Guest\Models\**" />
+    <Content Remove="Areas\Guest\Data\**" />
+    <Content Remove="Areas\Guest\Models\**" />
+    <EmbeddedResource Remove="Areas\Guest\Data\**" />
+    <EmbeddedResource Remove="Areas\Guest\Models\**" />
+    <None Remove="Areas\Guest\Data\**" />
+    <None Remove="Areas\Guest\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="4.1.1" />
+    <PackageReference Include="itext7" Version="7.1.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="xunit.extensibility.core" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\accommodations\" />
+    <Folder Include="wwwroot\images\stages\" />
+    <Folder Include="wwwroot\images\sponsors\" />
+    <Folder Include="wwwroot\images\transfervehicles\" />
+    <Folder Include="wwwroot\images\shopitems\" />
+    <Folder Include="wwwroot\images\performers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\Performer\List.cshtml" />
+    <None Include="Areas\Admin\Views\Performer\New.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Festival.Data\Festival.Data.csproj" />
+  </ItemGroup>
+
+</Project>

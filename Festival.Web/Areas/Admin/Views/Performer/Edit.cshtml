@@ -1,0 +1,107 @@
+﻿@model Festival.Web.ViewModels.Performer.EditPerformerVM;
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+
+
+<style>
+
+
+
+
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="Save" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <legend class="w-auto">Performer</legend>
+            <input asp-for="Id" hidden />
+            <div class="form-group newRow">
+                <label for="Name" class="newLabel">Name :</label>
+                <div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label for="PromoText" class="newLabel">Promotional text :</label>
+                <div>
+                    <textarea asp-for="PromoText" class="form-control" rows="3" style="height:100%"> </textarea>
+                </div>
+                <span asp-validation-for="PromoText" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group newRow">
+                <div>
+                    <label class="newLabel" for="Fee">Festival fee (KM) :</label>
+                    <input asp-for="Fee" class="form-control col-3" />
+                </div>
+                <span asp-validation-for="Fee" class="text-danger"></span>
+            </div>
+
+            <label class="newLabel" for="Image">Image : </label>
+            <div class="custom-file newRow">
+                <div>
+                    <input asp-for="Image" class="form-control custom-file-input col-6" />
+                    <label class="custom-file-label" for="Image">Choose image</label>
+                </div>
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="clearfix"></div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="w-auto">Manager</legend>
+
+            <input asp-for="ManagerId" hidden />
+            <div class="form-group newRow">
+                <label for="ManagerName" class="newLabel">Name :</label>
+                <div>
+                    <input asp-for="ManagerName" class="form-control" />
+                </div>
+                <span asp-validation-for="ManagerName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label for="ManagerEmail" class="newLabel">Email :</label>
+                <div>
+                    <input asp-for="ManagerEmail" type="email" class="form-control" />
+                </div>
+                <span asp-validation-for="ManagerEmail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label for="ManagerPhoneNumber" class="newLabel">Phone Number :</label>
+                <div>
+                    <input asp-for="ManagerPhoneNumber" class="form-control col-6" />
+                </div>
+                <span asp-validation-for="ManagerPhoneNumber" class="text-danger"></span>
+            </div>
+
+        </fieldset>
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="Performer" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <a asp-controller="Performer" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" role="button" aria-pressed="true">
+                Delete
+                <i class="fa fa-trash"></i>
+            </a>
+            <input type="submit" value="Save changes" class="btn btn-secondary submit ml-1" />
+        </div>
+
+
+    </form>
+</div>

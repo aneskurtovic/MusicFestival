@@ -1,0 +1,87 @@
+﻿@model Festival.Web.ViewModels.TransferVehicle.EditTransferVehicleVM;
+@{
+    ViewData["Title"] = Model.Name;
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/Inputmask-5.x/dist/jquery.inputmask.js"></script>
+
+
+<style>
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="Save" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <input asp-for="ID" hidden />
+            <div class="form-group newRow">
+                <label for="Name" class="newLabel">Name :</label>
+                <div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="col-7 newRow" style="float:left;padding-left:0px;">
+                    <label class="newLabel" for="RegistrationNumber">Registration Number :</label>
+                    <div>
+                        <input asp-for="RegistrationNumber" data-inputmask-regex="[AEOJKMT]\d{2}-[AEOJKMT]-\d{3}" id="regNum" class="form-control" />
+                    </div>
+                    <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
+                </div>
+                <div class="col-5 newRow" style="float:right;padding-right:0px;">
+                    <label class="newLabel" for="Capacity">Capacity : </label>
+                    <div>
+                        <input asp-for="Capacity" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Capacity" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group newRow">
+                <label for="Driver" class="newLabel">Driver :</label>
+                <div>
+                    <input asp-for="Driver" class="form-control" />
+                </div>
+                <span asp-validation-for="Driver" class="text-danger"></span>
+            </div>
+            <label class="newLabel" for="ProfileImage">Image :</label>
+            <div class="custom-file newRow">
+                <div>
+                    <input asp-for="Picture" class="form-control custom-file-input col-6" />
+                    <label class="custom-file-label" for="Picture">Choose image</label>
+                </div>
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+        </fieldset>
+
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <a asp-controller="TransferVehicle" asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-danger" role="button" aria-pressed="true">
+                Delete
+                <i class="fa fa-trash"></i>
+            </a>
+            <input type="submit" value="Save changes" class="btn btn-secondary submit ml-1" />
+        </div>
+
+
+    </form>
+</div>
+
+<script>
+
+    $(function ($) {
+        $("#regNum").inputmask();
+    })
+</script>

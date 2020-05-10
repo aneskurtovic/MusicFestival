@@ -1,0 +1,43 @@
+﻿@model Festival.Web.ViewModels.Stage.DetailStageVM;
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+
+<div class="col-6" style="float:left">
+    <h2 class="detailName">Stage</h2>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="VehicleName">Name : </label>
+        <span class="detailData">@Model.Name</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="MeetingPoint">Capacity : </label>
+        <span class="detailData">@Model.Capacity</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Date">Sponsor : </label>
+        <span class="detailData">@Model.SponsorName</span>
+    </div>
+    <div class="detailButtons btn-group">
+        <a style="margin-right:5px;" asp-controller="Stage" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+            Back
+            <i class="fa fa-undo"></i>
+        </a>
+        <a style="margin-right:5px;" asp-controller="Stage" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary active" role="button" aria-pressed="true">
+            Edit
+            <i class="fa fa-edit"></i>
+        </a>
+        <a asp-controller="Stage" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" role="button" aria-pressed="true">
+            Delete
+            <i class="fa fa-trash"></i>
+        </a>
+    </div>
+</div>
+<div class="col-6" style="float:right">
+    <img src="~/images/stages/@Model.Image" class="accImage imageDiv" />
+</div>
+
+<div class="clearfix"></div>
+
+

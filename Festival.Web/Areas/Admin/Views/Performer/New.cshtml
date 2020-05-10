@@ -1,0 +1,123 @@
+﻿@model Festival.Web.ViewModels.Performer.NewPerformerVM;
+@{
+    ViewData["Title"] = "New Performer";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/Inputmask-5.x/dist/jquery.inputmask.js"></script>
+
+<style>
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="SaveNew" enctype="multipart/form-data" method="post">
+
+        <fieldset>
+            <legend class="w-auto">Performer</legend>
+            <div class="form-group newRow">
+                <label for="Name" class="newLabel">Name :</label>
+                <div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label for="Fee" class="newLabel">Fee (KM) :</label>
+                <div>
+                    <input asp-for="Fee" class="form-control col-3" />
+                </div>
+                <span asp-validation-for="Fee" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label class="newLabel" for="PromoText">Promo text :</label>
+                <div>
+                    <textarea asp-for="PromoText" class="form-control" rows="4"></textarea>
+                </div>
+                <span asp-validation-for="PromoText" class="text-danger"></span>
+            </div>
+
+            <label class="newLabel" for="Image">Image : </label>
+            <div class="custom-file newRow">
+                <div>
+                    <input asp-for="Image" class="form-control custom-file-input col-6" />
+                    <label class="custom-file-label" for="Image">Choose image</label>
+                </div>
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend class="w-auto">Manager</legend>
+            <span class="font-italic small">Choose a manager from the list or insert new manager data</span>
+            <div class="clearfix"></div>
+
+            <div class="form-group newRow">
+                <select asp-items="@Model.Managers" asp-for="ManagerId" class="form-control">
+                    <option selected value="9999">(None of the listed)</option>
+                </select>
+
+            </div>
+            <div class="form-group newRow">
+                <label class="newLabel" for="ManagerName">Name :</label>
+                <div>
+                    <input asp-for="ManagerName" class="form-control" />
+                </div>
+                <span asp-validation-for="ManagerName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label class="newLabel" for="ManagerPhoneNumber">Phone number :</label>
+                <div>
+                    <input asp-for="ManagerPhoneNumber" class="form-control" />
+                </div>
+                <span asp-validation-for="ManagerPhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label class="newLabel" for="ManagerEmail">Email :</label>
+                <div>
+                    <input asp-for="ManagerEmail" class="form-control" id="email"/>
+                </div>
+                <span asp-validation-for="ManagerEmail" class="text-danger"></span>
+            </div>
+
+        </fieldset>
+
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="Performer" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit ml-1" />
+        </div>
+
+    </form>
+</div>
+<script>
+    $(function ($) {
+        $("#email").inputmask({
+            mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@@*{1,20}[.*{2,6}][.*{1,2}]",
+            greedy: false,
+            onBeforePaste: function (pastedValue, opts) {
+                pastedValue = pastedValue.toLowerCase();
+                return pastedValue.replace("mailto:", "");
+            },
+            definitions: {
+                '*': {
+                    validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~\-]",
+                    casing: "lower"
+                }
+            }
+        });
+    })
+</script>

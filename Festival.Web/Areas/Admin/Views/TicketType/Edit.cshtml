@@ -1,0 +1,67 @@
+﻿@model Festival.Web.ViewModels.TicketType.EditTicketTypeVM;
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<style>
+
+
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-controller="TicketType" asp-action="Save" method="post">
+        <fieldset>
+            <input asp-for="Id" hidden />
+            <div class="form-group newRow">
+                <label for="Name" class="newLabel">Name :</label>
+                <div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label for="Description" class="newLabel">Description :</label>
+                <div>
+                    <input asp-for="Description" class="form-control" />
+                </div>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label class="newLabel" for="Price">Price (KM) :</label>
+                <div>
+                    <input asp-for="Price" class="form-control col-4" />
+                </div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group newRow">
+                <label class="newLabel" for="Tier">Tier :</label>
+                <div>
+                    <input asp-for="Tier" class="form-control col-4" />
+                </div>
+                <span asp-validation-for="Tier" class="text-danger"></span>
+            </div>
+        </fieldset>
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="TicketType" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <a asp-controller="TicketType" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" role="button" aria-pressed="true">
+                Delete
+                <i class="fa fa-trash"></i>
+            </a>
+            <input type="submit" value="Save changes" class="btn btn-secondary submit ml-1" />
+        </div>
+
+    </form>
+</div>
